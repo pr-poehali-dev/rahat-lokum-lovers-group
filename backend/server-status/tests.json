@@ -1,0 +1,26 @@
+{
+  "tests": [
+    {
+      "name": "OPTIONS preflight",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200
+    },
+    {
+      "name": "No token → 401",
+      "method": "POST",
+      "path": "/",
+      "headers": {},
+      "body": {"command": "uptime"},
+      "expectedStatus": 401
+    },
+    {
+      "name": "Wrong token → 401",
+      "method": "POST",
+      "path": "/",
+      "headers": {"X-Admin-Token": "wrong"},
+      "body": {"command": "uptime"},
+      "expectedStatus": 401
+    }
+  ]
+}
